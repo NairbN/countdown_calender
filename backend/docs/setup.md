@@ -18,7 +18,7 @@ Quick steps to get the backend running for local development.
    - `CORS_ORIGINS` → comma-separated frontend origins (e.g., `http://localhost:3000,http://localhost:5173`).
 
 ## One-command up/down with Docker Compose
-- From project root: `./run_compose.sh` (starts `docker compose up` and runs `docker compose down` automatically on Ctrl+C/exit).
+- From project root: `make up` (starts `docker compose up` and runs `docker compose down` automatically on Ctrl+C/exit).
 - Standard start: `docker compose up --build` (rebuild only if Dockerfile/entrypoint/deps changed).
 
 ## Run backend locally (using Docker DB)
@@ -46,9 +46,6 @@ cd backend
 uv run pytest  # or .venv/bin/pytest
 ```
 Default test DB: `postgresql+asyncpg://postgres:postgres@localhost:5432/countdown_db` (override with `TEST_DATABASE_URL`). Make sure Postgres is running and reachable; tests will skip if the DB is down.
-
-## Run/stop stack with cleanup
-- From project root: `./run_compose.sh` (starts `docker compose up` and runs `docker compose down` automatically on Ctrl+C/exit).
 
 ## API quick smoke
 - Health: `GET /health`
