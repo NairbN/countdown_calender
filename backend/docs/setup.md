@@ -13,12 +13,12 @@ Quick steps to get the backend running for local development.
    cp .env.example .env
    ```
 2) Set values:
-   - `DATABASE_URL` → for Docker Compose use `postgresql+asyncpg://postgres:postgres@db:5432/countdown_db`; for local Postgres use `@localhost:5432`.
+   - `DATABASE_URL` → local runs: `postgresql+asyncpg://postgres:postgres@localhost:5432/countdown_db`. For Docker Compose, the service overrides this to `@db:5432` automatically.
    - `SECRET_KEY` → set a non-default value.
    - `CORS_ORIGINS` → comma-separated frontend origins (e.g., `http://localhost:3000,http://localhost:5173`).
 
 ## One-command up/down with Docker Compose
-- From project root: `make up` (starts `docker compose up` and runs `docker compose down` automatically on Ctrl+C/exit).
+- From project root: `make up` (creates `backend/.env` with a generated `SECRET_KEY` if missing, starts `docker compose up`, and on Ctrl+C/exit runs `docker compose down` and deletes `backend/.env`).
 - Standard start: `docker compose up --build` (rebuild only if Dockerfile/entrypoint/deps changed).
 
 ## Run backend locally (using Docker DB)

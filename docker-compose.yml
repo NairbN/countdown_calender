@@ -17,6 +17,8 @@ services:
       context: ./backend
     env_file:
       - ./backend/.env
+    environment:
+      DATABASE_URL: postgresql+asyncpg://postgres:postgres@db:5432/countdown_db
     depends_on:
       - db
     ports:
