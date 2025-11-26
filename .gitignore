@@ -19,6 +19,7 @@ dist/
 build/
 .env
 .env.*
+!backend/.env.example
 
 # Node / frontend
 node_modules/
@@ -31,4 +32,3 @@ package-lock.json
 yarn.lock
 dist-ssr/
 build-ssr/
-
