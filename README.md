@@ -1,10 +1,6 @@
 # Countdown Calendar
 
-This project has a FastAPI backend with Postgres. For backend setup, development, and API details, start with:
-
-- [Backend Dev Guide](backend/docs/README.md)
-- [Setup instructions](backend/docs/setup.md)
-- [API reference](backend/docs/api.md)
+Full-stack countdown events app in progress. Backend is FastAPI + Postgres with Dockerized dev setup; frontend to be added later.
 
 ## Prereqs
 - Docker and Docker Compose
@@ -17,5 +13,11 @@ This project has a FastAPI backend with Postgres. For backend setup, development
 ## Ports
 - DB: host port 5432. Ensure no other Postgres is bound (stop old containers/services or change the mapping in `docker-compose.yml`).
 - Backend: host port 8000. Free it if another service is using it.
+
+This project has a FastAPI backend with Postgres. For backend setup, development, and API details, start with:
+
+- [Backend Dev Guide](backend/docs/README.md)
+- [Setup instructions](backend/docs/setup.md)
+- [API reference](backend/docs/api.md)
 
 Frontend setup/docs: (add links when available).
