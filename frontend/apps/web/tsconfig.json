@@ -13,6 +13,7 @@
     "isolatedModules": true,
     "jsx": "react-jsx",
     "incremental": true,
+    "types": ["vitest/globals", "@testing-library/jest-dom"],
     "plugins": [
       {
         "name": "next"
@@ -20,10 +21,14 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
-      "@countdown-calender/api-client/*": ["../../packages/api-client/*"],
-      "@countdown-calender/state/*": ["../../packages/state/*"],
-      "@countdown-calender/domain/*": ["../../packages/domain/*"],
-      "@countdown-calender/ui/*": ["../../packages/ui/*"]
+      "@countdown-calender/api-client": ["../../packages/api-client/src"],
+      "@countdown-calender/api-client/*": ["../../packages/api-client/src/*"],
+      "@countdown-calender/state": ["../../packages/state/src"],
+      "@countdown-calender/state/*": ["../../packages/state/src/*"],
+      "@countdown-calender/domain": ["../../packages/domain/src"],
+      "@countdown-calender/domain/*": ["../../packages/domain/src/*"],
+      "@countdown-calender/ui": ["../../packages/ui/src"],
+      "@countdown-calender/ui/*": ["../../packages/ui/src/*"]
     }
   },
   "include": [
