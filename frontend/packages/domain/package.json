@@ -1,0 +1,7 @@
+{
+  "name": "@countdown-calender/domain",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Pure countdown/time utilities shared across platforms."
+}

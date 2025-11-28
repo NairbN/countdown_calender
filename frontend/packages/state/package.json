@@ -1,0 +1,13 @@
+{
+  "name": "@countdown-calender/state",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Shared state utilities for the Countdown Calender frontend.",
+  "dependencies": {
+    "@tanstack/react-query": "^5.90.11"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0"
+  }
+}

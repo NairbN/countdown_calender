@@ -1,0 +1,10 @@
+{
+  "name": "@countdown-calender/api-client",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Shared API client for the Countdown Calender FastAPI backend.",
+  "dependencies": {
+    "zod": "^3.25.76"
+  }
+}

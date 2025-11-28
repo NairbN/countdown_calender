@@ -1,0 +1,7 @@
+{
+  "name": "@countdown-calender/ui",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Optional shared UI primitives for web and mobile."
+}
