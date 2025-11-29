@@ -1,4 +1,5 @@
-import { createApiClient, userSchema } from "../index";
+import { createApiClient } from "../client";
+import { userSchema } from "../schemas";
 
 describe("createApiClient", () => {
   beforeEach(() => {

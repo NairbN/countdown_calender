@@ -8,11 +8,12 @@ Phase 2 — auth + events core
 - Use backend schemas (`title`, `description`, `start_at`, `duration_minutes`, `all_day`).
 - Store JWT in memory + localStorage; redirect to login on 401. Shared hooks (`useLogin`, `useRegister`, `useCurrentUser`, `useEvents`, `useCreate/Update/DeleteEvent`) in `packages/state`.
 - Countdown: compute from `start_at` + `duration_minutes`; treat all-day as date-only.
+- Shared query keys and UI primitives (`PageShell`, `Card`, `Surface`, `Button`, `Input`, `Text`, `Heading`, `Stack`, `FormField`, `Badge`, `Chip`, `SegmentedControl`, `Skeleton`, `Spinner`, `Banner`, `Modal`, `EmptyState`, `Toolbar`, `Grid`, `tokens`) ready for pages.
 
 Phase 3 — polish
 - Empty/error states, loading skeletons, form validation.
 - Timezone display formatting.
-- Tests: time math unit tests; MSW integration for auth/events hooks; later Playwright e2e. Run `pnpm test` (one-shot) or `pnpm test:watch` for watch mode.
+- Tests: time math unit tests; MSW integration for auth/events hooks; later Playwright e2e. Run `pnpm test` (one-shot) or `pnpm test:watch` for watch mode; UI primitives covered via Testing Library in jsdom.
 
 Phase 4 — mobile prep
 - Add `apps/mobile` (Expo) reusing `packages/*`.

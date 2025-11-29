@@ -3,5 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "description": "Optional shared UI primitives for web and mobile."
+  "description": "Optional shared UI primitives for web and mobile.",
+  "main": "src/index.tsx",
+  "types": "src/index.tsx",
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
+  }
 }

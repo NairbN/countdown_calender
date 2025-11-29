@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  useMutation,
-  useQuery,
-  useQueryClient,
-} from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import type {
   Event,
   EventCreateInput,
@@ -12,6 +8,7 @@ import type {
   User,
 } from "@countdown-calender/api-client";
 import { useApiClient, useAuth } from "./useAuth";
+import { queryKeys } from "./keys";
 
 export function useLogin() {
   const client = useApiClient();
@@ -42,7 +39,7 @@ export function useCurrentUser() {
   const client = useApiClient();
   const { token } = useAuth();
   return useQuery<User>({
-    queryKey: ["auth", "me"],
+    queryKey: queryKeys.auth.me,
     queryFn: () => client.me(),
     enabled: !!token,
   });
@@ -50,9 +47,21 @@ export function useCurrentUser() {
 
 export function useEvents() {
   const client = useApiClient();
+  const { token } = useAuth();
   return useQuery<Event[]>({
-    queryKey: ["events"],
+    queryKey: queryKeys.events.all,
     queryFn: () => client.listEvents(),
+    enabled: !!token,
+  });
+}
+
+export function useEvent(eventId: string) {
+  const client = useApiClient();
+  const { token } = useAuth();
+  return useQuery<Event>({
+    queryKey: queryKeys.events.detail(eventId),
+    queryFn: () => client.getEvent(eventId),
+    enabled: !!eventId && !!token,
   });
 }
 
@@ -62,7 +71,7 @@ export function useCreateEvent() {
   return useMutation({
     mutationFn: (input: EventCreateInput) => client.createEvent(input),
     onSuccess: () => {
-      qc.invalidateQueries({ queryKey: ["events"] });
+      qc.invalidateQueries({ queryKey: queryKeys.events.all });
     },
   });
 }
@@ -74,8 +83,8 @@ export function useUpdateEvent(eventId: string) {
     mutationFn: (input: EventUpdateInput) =>
       client.updateEvent(eventId, input),
     onSuccess: (event) => {
-      qc.invalidateQueries({ queryKey: ["events"] });
-      qc.setQueryData(["events", eventId], event);
+      qc.invalidateQueries({ queryKey: queryKeys.events.all });
+      qc.setQueryData(queryKeys.events.detail(eventId), event);
     },
   });
 }
@@ -86,8 +95,8 @@ export function useDeleteEvent(eventId: string) {
   return useMutation({
     mutationFn: () => client.deleteEvent(eventId),
     onSuccess: () => {
-      qc.invalidateQueries({ queryKey: ["events"] });
-      qc.removeQueries({ queryKey: ["events", eventId] });
+      qc.invalidateQueries({ queryKey: queryKeys.events.all });
+      qc.removeQueries({ queryKey: queryKeys.events.detail(eventId) });
     },
   });
 }

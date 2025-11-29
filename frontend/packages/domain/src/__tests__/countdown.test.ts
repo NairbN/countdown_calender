@@ -1,4 +1,5 @@
-import { getCountdownSummary } from "../index";
+import { getCountdownSummary } from "../countdown";
+import { formatCountdownToStart } from "../countdown";
 
 describe("getCountdownSummary", () => {
   it("returns remaining time when in future", () => {
@@ -14,5 +15,13 @@ describe("getCountdownSummary", () => {
     const result = getCountdownSummary(past, 1);
     expect(result.isExpired).toBe(true);
     expect(result.millisRemaining).toBe(0);
+  });
+
+  it("formats long countdown into years and months", () => {
+    const now = new Date();
+    const future = new Date(now.getTime() + 400 * 24 * 60 * 60 * 1000).toISOString();
+    const result = formatCountdownToStart(future);
+    expect(result.label).toMatch(/year/);
+    expect(result.isExpired).toBe(false);
   });
 });
